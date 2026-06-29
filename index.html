@@ -2,113 +2,175 @@
 <html>
 <head>
   <title>Form Render</title>
+
+  <style>
+    body {
+      background: #242424;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: white;
+      font-family: Georgia, serif;
+      margin: 28px 0 42px 18px;
+    }
+
+    .box {
+      background: white;
+      width: 1230px;
+      margin-left: 18px;
+      padding: 48px 58px 45px 40px;
+    }
+
+    form {
+      width: 1150px;
+    }
+
+    fieldset {
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      padding: 14px 16px;
+    }
+
+    legend {
+      font-size: 22px;
+    }
+
+    .row {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: inline-block;
+      width: 220px;
+      font-size: 22px;
+      vertical-align: top;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"] {
+      width: 270px;
+      height: 30px;
+      font-size: 20px;
+    }
+
+    textarea {
+      width: 890px;
+      height: 135px;
+      font-size: 20px;
+    }
+
+    select {
+      width: 160px;
+      height: 45px;
+      font-size: 20px;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: 20px;
+      height: 20px;
+    }
+
+    .inline {
+      display: inline-block;
+      font-size: 22px;
+    }
+
+    button {
+      float: right;
+      background: blue;
+      color: white;
+      font-size: 22px;
+      padding: 10px 14px;
+      border-radius: 7px;
+      border: 2px solid #555;
+      margin-top: 8px;
+    }
+  </style>
 </head>
- <style>
-  body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-}
 
-form {
-  width: 800px;
-}
-
-fieldset {
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  margin-bottom: 8px;
-  padding: 12px;
-}
-
-.row {
-  margin-bottom: 10px;
-}
-
-label {
-  display: inline-block;
-  width: 150px;
-  vertical-align: top;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="email"],
-select {
-  width: 180px;
-}
-
-textarea {
-  width: 600px;
-  height: 90px;
-}
-
-button {
-  float: right;
-  background-color: blue;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 4px;
-}
- </style>
 <body>
 
-<form action="https://teach-backend-fawn.vercel.app/api/product"
-      method="POST"
-      enctype="multipart/form-data">
+  <h1>Expected Form Render:</h1>
 
-  <fieldset>
-    <legend>General Info</legend>
+  <div class="box">
+    <form action="https://teach-backend-fawn.vercel.app/api/product"
+          method="POST"
+          enctype="multipart/form-data">
 
-    <label>Item Name</label>
-    <input type="text" name="itemName">
+      <fieldset>
+        <legend>General Info</legend>
 
-    <label>Description</label>
-    <textarea name="itemDescription"></textarea>
+        <div class="row">
+          <label>Item Name</label>
+          <input type="text" name="itemName">
+        </div>
 
-    <label>Category</label>
-    <select name="category">
-      <option value="notSpecified">notSpecified</option>
-      <option value="consumption">consumption</option>
-      <option value="household">household</option>
-      <option value="electronic">electronic</option>
-      <option value="gadget">gadget</option>
-    </select>
-  </fieldset>
+        <div class="row">
+          <label>Description</label>
+          <textarea name="itemDescription"></textarea>
+        </div>
 
-  <fieldset>
-    <legend>Misc.</legend>
+        <div class="row">
+          <label>Category</label>
+          <select name="category">
+            <option value="notSpecified">notSpecified</option>
+            <option value="consumption">consumption</option>
+            <option value="household">household</option>
+            <option value="electronic">electronic</option>
+            <option value="gadget">gadget</option>
+          </select>
+        </div>
+      </fieldset>
 
-    <label>Inventory Amount</label>
-    <input type="number" name="inventoryAmount">
+      <fieldset>
+        <legend>Misc.</legend>
 
-    <label>List price</label>
-    <input type="number" name="listPrice">
+        <div class="row">
+          <label>Inventory Amount</label>
+          <input type="number" name="inventoryAmount">
+        </div>
 
-    <label>Available Stores</label>
-    <div>
-      <input type="checkbox" name="availableStore[]" value="Bangkok">Bangkok
-      <input type="checkbox" name="availableStore[]" value="Pattaya">Pattaya
-      <input type="checkbox" name="availableStore[]" value="Phuket">Phuket
-    </div>
+        <div class="row">
+          <label>List price</label>
+          <input type="number" name="listPrice">
+        </div>
 
-    <label>Available Stores</label>
-    <div>
-      <input type="radio" name="status" value="Active">Active
-      <input type="radio" name="status" value="Inactive">Inactive
-    </div>
-  </fieldset>
+        <div class="row">
+          <label>Available Stores</label>
+          <span class="inline">
+            <input type="checkbox" name="availableStore[]" value="Bangkok">Bangkok
+            <input type="checkbox" name="availableStore[]" value="Pattaya">Pattaya
+            <input type="checkbox" name="availableStore[]" value="Phuket">Phuket
+          </span>
+        </div>
 
-  <fieldset>
-    <legend>Staff</legend>
+        <div class="row">
+          <label>Available Stores</label>
+          <span class="inline">
+            <input type="radio" name="status" value="Active">Active
+            <input type="radio" name="status" value="Inactive">Inactive
+          </span>
+        </div>
+      </fieldset>
 
-    <label>Staff Email</label>
-    <input type="email" name="staffEmail">
-  </fieldset>
+      <fieldset>
+        <legend>Staff</legend>
 
-  <button type="submit">Submit Form</button>
+        <div class="row">
+          <label>Staff Email</label>
+          <input type="email" name="staffEmail">
+        </div>
+      </fieldset>
 
-</form>
+      <button type="submit">Submit Form</button>
+
+    </form>
+  </div>
 
 </body>
 </html>
